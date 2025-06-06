@@ -3,15 +3,9 @@ import Alert from '../models/alert.model.js';
 
 const router = Router();
 
-router.post('/', async (requestAnimationFrame, res) => {
-    const alert = new Alert(req,body);
-    await alert.save();
-    res.status(201).json(alert);
-});
+//Ruta para crear una alerta (POST)
+router.post('/', createAlert);
 
-router.get('/', async (req, res) => {
-    const alerts = await Alert.find();
-    res.status(200).json(alerts);
-});
-
+// Ruta para obtener todas las alertas (GET)
+router.get('/', getAlerts);
 export default router;
