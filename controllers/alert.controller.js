@@ -2,12 +2,14 @@ import Alert from '../models/alert.model.js';
 
 // Crear nueva alerta
 export const createAlert = async (req, res) => {
+    const { symbol, targetPrice, email } = req.body;
+
     try {
-        const alert = new Alert(req.body);
-        await alert.save();
-        res.status(201).json(alert);
+        const alert = new Alert({ symbol, targetPrice, email });
+        const savedAlert = await alert.save();
+        return res.status(201).json(savedAlert);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(400).json({ error: error.message });
     }
 };
 

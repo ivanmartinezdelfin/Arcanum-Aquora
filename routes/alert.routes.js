@@ -1,8 +1,7 @@
 import { Router } from 'express';
-import Alert from '../models/alert.model.js';
+import { createAlert, getAlerts} from '../controllers/alert.controller.js';
 
 const router = Router();
-
 //Ruta para crear una alerta (POST)
 router.post('/', createAlert);
 
